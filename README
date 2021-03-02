@@ -1,0 +1,44 @@
+#  README
+
+#   What This Terraform Script Does:
+#  For using Terraform to install ubuntu EC2s in your AWS acccount with Internet Access  for ACI Cloud Openshift Install on AWS
+1)   This will install,  new VPC/Subnets/IGW/SecurityGroups, etc, etc on your AWS account
+2)   Will Install ubuntu VM  bionic-18.04,  You can change the num_instance variable in main.tf ifyou wanted more than 1 instance spun up (no need to, but you can use this for other things also)
+3)   Will take your public ssh key from your mac or local linux box from /.ssh/id_rsa.pub and register the public key to the ec2s, so you can ssh in from your local machine with no password
+3)   will update the VM and install acc-provision 
+4)   will install aws-cli
+
+#  How to use:
+1)  If you don't have Terraform, download from terraform.io and install on your local machine ( just put the binary in /user/bin (takes a minute)
+2)  Make a directory where you will use this particular script from
+3)  In that directory, clone this repo:  git clone https://github.com/soumukhe/terraform-parent_module-awsacicloud-openshift_install.git 
+4)  now do a terraform init
+5)  a .terraform directory will get created in that directory
+6)   cd to .terraform/modules/openshift_install   and when there wget the correct acc-provision ubuntu binary.  Use this command.  
+        wget https://filedn.com/lXHxS7h2cGFBG96oj38e1z8/acc-provision-openshift/acc-provision_5.0.1.0-57_amd64.deb
+
+7)  Now go back to the main directory where you had put the main.tf file
+    At this time please make the temporary env variables as such:
+            export AWS_ACCESS_KEY_ID=Whatever it is
+            export AWS_SECRET_ACCESS_KEY=WhatEver The value is
+
+    # How to create the AWS Keys and source the export_keys.sh  
+    you can go to AWS IAM, create a user with programmatic access,  get the values above and populate the export_keys.sh  in this directory.  Then run  source export_keys.sh
+    Remember there are no variables defined for these keys (though technically you can).  It is a bad idea to have these values hardcoded.   The terraform state files will show them though.  For that reason
+    using terraform cloud (with processing in Terraform Cloud option)  is a good idea.  Terraform cloud encrypts the values in Terraform Vault.  Terraform Cloud is free unless you want advanced features like Sentinel 
+    and group management.
+     
+
+8) In that directory  do the following:
+    a)  terraform validate
+    b)  terraform fmt
+    c)  terraform apply   and confirm with yes when asked
+The script will run now and take about  6 to 10 minutes to complete
+
+    d) To destroy everything use terraform destroy
+    e) To see state files do terraform show
+    f) If you make any changed in variables, do a terraform apply again 
+    g) terraform plan to see what the plan is without implementing
+
+9)  when completed, it will display the public IPs of the VM ( or VMs, if you had num_inst  to be more than 1    ssh to the ubuntu EC2 from your local machine by ssh ubuntu@public_ip
+11) Follow the rest of the guide from unofficialaciguide.com  to finish off the rest of the ACI/AWS  Cloud APIC Openshift integration.
