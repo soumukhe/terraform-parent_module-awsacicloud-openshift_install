@@ -12,6 +12,7 @@
 1)  If you don't have Terraform, download from terraform.io and install on your local machine ( just put the binary in /user/bin (takes a minute)
 2)  Make a directory where you will use this particular script from
 3)  In that directory, clone this repo:  git clone https://github.com/soumukhe/terraform-parent_module-awsacicloud-openshift_install.git 
+    a new directory will be created called terraform-parent_module-awsacicloud-openshift_install,   go there:  cd terraform-parent_module-awsacicloud-openshift_install
 4)  now do a terraform init
 5)  a .terraform directory will get created in that directory
 6)   cd to .terraform/modules/openshift_install   and when there wget the correct acc-provision ubuntu binary.  Use this command.  
