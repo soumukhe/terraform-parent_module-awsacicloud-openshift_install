@@ -2,7 +2,7 @@
 
 module "openshift_install" {
   source  = "soumukhe/openshift_install/awsacicloud"
-  version = "1.0.4"
+  version = "1.0.0"
 
   #  These variables are defined in main.tf of this parent module.  This variables are used in child module resources.tf which is the main script.  
   #  The submoudle directory is .terraform/modules/openshift_install  under this directory
