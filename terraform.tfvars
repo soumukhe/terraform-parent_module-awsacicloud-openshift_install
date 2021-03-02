@@ -1,7 +1,7 @@
 # terraform.tfvars   Please define the values of the variables.  The variabiles were defined in vars.tf with default values
 
-region            = "us-west-1"                                                  # aws region where you will configure all this
-num_inst          = 9                                                            # number of ec2s
+region            = "us-east-1"                                                  # aws region where you will configure all this
+num_inst          = 1                                                            # number of ec2s
 instancename      = "OpenshiftInstallUbuntu"                                     # instance name will have index numbers attached to end if more than one ec2
 instance_type     = "t2.micro"                                                   #  the instance type, such as t2.micro
 vpcname           = "openshiftInstall-vpc"                                       # vpc name
