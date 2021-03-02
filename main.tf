@@ -13,7 +13,7 @@ module "openshift_install" {
   num_inst          = var.num_inst          # defines the number of ec2s you want to spin up
   instancename      = var.instancename      # defines the name of the ec2s,  for more than one, they will have a postfix with index numbers
   vpcname           = var.vpcname           # defines the Name tag of the vpc
-  instance_type     = var.instancei_type    #  the instancetype such as t2.micro
+  instance_type     = var.instance_type    #  the instancetype such as t2.micro
   cidr              = var.cidr              # defines the cidr value of the vpc
   subnet            = var.subnet            # defines the subnet of the vpc, must be a subnet from the cidr
   subnetname        = var.subnetname        # defines the tag for the subnet name
